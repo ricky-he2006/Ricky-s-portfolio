@@ -3,7 +3,7 @@ export function Footer() {
     <footer className="relative z-10 mt-24 border-t border-border">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 sm:flex-row">
         <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Ruiqi He · Crafted with cyan & curiosity
+          © {new Date().getFullYear()} Ruiqi He
         </p>
         <div className="flex gap-4 text-xs text-muted-foreground">
           <a href="https://github.com/ricky-he2006" target="_blank" rel="noreferrer" className="hover:text-primary">GitHub</a>
