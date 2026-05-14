@@ -17,7 +17,7 @@ export const projects: Project[] = [
     date: "April 10–12, 2026",
     badge: "1st Place",
     summary:
-      "LangChain + Kimi 2.5 agent sending email/Slack alerts and PDF reports",
+      "Built an interactive geospatial dashboard analyzing 4 years of Stormont Vail Health patient encounter data across Kansas.",
     bullets: [
       "Mapped patient distribution & hospital access across Kansas",
       "Lasso selection for multi-region analysis",
@@ -65,7 +65,7 @@ export const projects: Project[] = [
       "Interactive dashboard built with Lovable during the hackathon, featuring ML-based price prediction",
     ],
     tech: ["Python", "Databricks", "ML", "Geospatial"],
-    link: { label: "Live demo", href: "https://nyc-housing-sales-analytics-e7k5-p7iohs661.vercel.app" },
+    link: { label: "Live demo", href: "https://nyc-housing-sales-analytics-e7k5.vercel.app/" },
   },
   {
     slug: "talkora",
