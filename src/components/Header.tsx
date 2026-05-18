@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import logo from "@/assets/logo.jpg";
 
 const links = [
   { to: "/", label: "Home" },
@@ -12,9 +13,13 @@ export function Header() {
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/60 border-b border-border">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link to="/" className="group flex items-center gap-2">
-          <span className="grid size-9 place-items-center rounded-lg bg-gradient-to-br from-primary to-accent font-display font-bold text-primary-foreground glow">
-            RH
-          </span>
+          <img
+            src={logo}
+            alt="Ruiqi He"
+            width={1024}
+            height={635}
+            className="h-9 w-auto object-contain"
+          />
           <span className="hidden font-display text-sm font-medium tracking-wide sm:inline">
             Ruiqi He
           </span>
