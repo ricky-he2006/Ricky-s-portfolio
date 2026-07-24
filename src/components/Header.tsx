@@ -4,6 +4,7 @@ import logo from "@/assets/logo.jpg";
 const links = [
   { to: "/", label: "Home" },
   { to: "/projects", label: "Projects" },
+  { to: "/experience", label: "Experience" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ] as const;

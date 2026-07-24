@@ -29,18 +29,6 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: "omniguard-ai",
-    title: "OmniGuard AI",
-    date: "Spring 2026 — Ongoing",
-    summary: "End-to-end fraud detection system benchmarking 7+ ML models with an autonomous AI agent.",
-    bullets: [
-      "SQL pipeline for profiling, cleaning, feature engineering, validation",
-      "LangChain + Gemini agent sending email/Slack alerts and PDF reports",
-      "Full-stack Streamlit dashboard with model comparisons and agent logs",
-    ],
-    tech: ["LangChain", "Gemini", "SQL", "Streamlit", "ML"],
-  },
-  {
     slug: "clara",
     title: "CLARA — Clairvoyant Loss Avoidance & Risk Advisor",
     date: "Spring 2026",

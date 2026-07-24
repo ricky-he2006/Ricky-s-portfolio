@@ -39,9 +39,8 @@ function Home() {
             Hi, I'm <span className="text-gradient">Ricky</span>.
             <br />I turn data into <span className="text-gradient">decisions</span>.
           </h1>
-          <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg whitespace-pre-line">
-            Data Analytics @ The Ohio State University, ASC Honors
-            Interested in biomedical applications, AI, and machine learning. I am also interested in how they can come together to improve healthcare, finance, and beyond. Excited by the challenge of making complex systems more interpretable, ethical, and impactful.
+          <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
+            Building AI-powered ML pipelines that analyze multi-modal physiological signals to predict cognitive decline. Biomedical data scientist turning complex health data into actionable insights for clinicians and researchers.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
@@ -73,6 +72,7 @@ function Home() {
               alt="Portrait of Ruiqi He"
               width={768}
               height={768}
+              sizes="(max-width: 640px) 288px, (max-width: 1024px) 320px, 512px"
               className="size-72 rounded-full object-cover sm:size-80"
             />
           </div>
@@ -80,10 +80,10 @@ function Home() {
       </section>
 
       {/* Skills marquee */}
-      <section className="relative mt-24 overflow-hidden border-y border-border py-8">
+      <section className="relative mt-24 overflow-hidden border-y border-border py-8" aria-label="Skills">
         <div className="flex w-max gap-10 marquee">
           {[...skills, ...skills].map((s, i) => (
-            <span key={i} className="font-display text-2xl text-muted-foreground/70 whitespace-nowrap">
+            <span key={i} tabIndex={0} role="text" className="font-display text-2xl text-muted-foreground/70 whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:rounded-md">
               {s} <span className="text-primary">·</span>
             </span>
           ))}

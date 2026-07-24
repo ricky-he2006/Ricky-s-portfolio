@@ -12,6 +12,30 @@ import appCss from "../styles.css?url";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MouseGradient } from "@/components/MouseGradient";
+import { DarkModeToggle } from "@/components/DarkModeToggle";
+
+// JSON-LD Structured Data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ruiqi He",
+  "description": "Data Analytics undergraduate at Ohio State, specializing in Biomedical & Public Health Analytics. AI/ML researcher and hackathon winner building predictive models and interactive data visualizations.",
+  "jobTitle": "Data Analytics Student",
+  "url": "https://rickyhe2006.com",
+  "email": "mailto:he.2497@buckeyemail.osu.edu",
+  "sameAs": [
+    "https://www.linkedin.com/in/rickyhe2006",
+    "https://github.com/ricky-he2006",
+    "https://devpost.com/rickyhe2006"
+  ],
+  "education": {
+    "@type": "EducationEvent",
+    "endDate": "2028-05",
+    "name": "The Ohio State University",
+    "degree": "B.S. Data Analytics",
+    "description": "Biomedical & Public Health Analytics specialization, ASC Honors"
+  }
+};
 
 function NotFoundComponent() {
   return (
@@ -68,9 +92,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Ruiqi He — Data Analytics @ Ohio State" },
       { property: "og:description", content: "Portfolio of Ruiqi (Ricky) He — data analytics, AI, and award-winning visualization work." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://rickyhe2006.com/og.png" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "stylesheet", href: appCss }],
+    links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.svg" },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -82,7 +110,12 @@ function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head><HeadContent /></head>
-      <body>
+      <body className="min-h-screen bg-background text-foreground">
+        <DarkModeToggle />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         {children}
         <Scripts />
       </body>
