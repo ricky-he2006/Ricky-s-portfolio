@@ -1,4 +1,5 @@
 import { useRef, type ReactNode, type MouseEvent } from "react";
+import { cn } from "@/lib/utils";
 
 export function GlowCard({ children, className = "" }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -15,7 +16,10 @@ export function GlowCard({ children, className = "" }: { children: ReactNode; cl
     <div
       ref={ref}
       onMouseMove={onMove}
-      className={`group relative overflow-hidden rounded-2xl border border-border bg-card/60 p-6 backdrop-blur-md transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_50px_-10px_oklch(0.82_0.14_200/0.4)] ${className}`}
+      className={cn(
+        "group relative overflow-hidden rounded-2xl border border-border bg-card/60 p-6 backdrop-blur-md transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_50px_-10px_oklch(0.82_0.14_200/0.4)]",
+        className,
+      )}
     >
       <div
         aria-hidden
