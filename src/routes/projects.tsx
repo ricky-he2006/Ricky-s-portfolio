@@ -128,15 +128,26 @@ function ProjectsPage() {
                           </div>
                         )}
 
-                        <div className="space-y-3">
-                          {p.details.map((para) => (
-                            <p
-                              key={para.slice(0, 48)}
-                              className="text-sm leading-relaxed text-muted-foreground"
-                            >
-                              {para}
-                            </p>
-                          ))}
+                        <div className="space-y-4">
+                          {p.sections && p.sections.length > 0
+                            ? p.sections.map((s) => (
+                                <div key={s.title}>
+                                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+                                    {s.title}
+                                  </p>
+                                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                                    {s.body}
+                                  </p>
+                                </div>
+                              ))
+                            : p.details.map((para) => (
+                                <p
+                                  key={para.slice(0, 48)}
+                                  className="text-sm leading-relaxed text-muted-foreground"
+                                >
+                                  {para}
+                                </p>
+                              ))}
                         </div>
 
                         <ul className="space-y-2 text-sm text-foreground/90">
