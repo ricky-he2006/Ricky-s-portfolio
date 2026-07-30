@@ -107,8 +107,8 @@ function AboutPage() {
         <GlowCard>
           <h2 className="font-display text-xl font-semibold">Languages</h2>
           <ul className="mt-4 space-y-2 text-sm">
+            <li>🇺🇸 English — Native</li>
             <li>🇨🇳 Chinese — Native</li>
-            <li>🇺🇸 English — Fluent</li>
             <li>🇪🇸 Spanish — Basic</li>
           </ul>
         </GlowCard>
