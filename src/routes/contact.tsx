@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useState, useRef, FormEvent } from "react";
 import { GlowCard } from "@/components/GlowCard";
@@ -7,7 +7,7 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — Ruiqi He" },
-      { name: "description", content: "Get in touch with Ruiqi He — email, phone, LinkedIn, GitHub." },
+      { name: "description", content: "Get in touch with Ruiqi He — email, LinkedIn, GitHub, or download resume." },
       { property: "og:title", content: "Contact — Ruiqi He" },
       { property: "og:description", content: "Let's build something." },
     ],
@@ -15,8 +15,10 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
+const CONTACT_EMAIL = "he.2497@buckeyemail.osu.edu";
+
 const channels = [
-  { label: "Email (School)", value: "he.2497@buckeyemail.osu.edu", href: "mailto:he.2497@buckeyemail.osu.edu" },
+  { label: "Email (School)", value: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
   { label: "LinkedIn", value: "linkedin.com/in/rickyhe2006", href: "https://www.linkedin.com/in/rickyhe2006" },
   { label: "GitHub", value: "github.com/ricky-he2006", href: "https://github.com/ricky-he2006" },
   { label: "Devpost", value: "devpost.com/rickyhe2006", href: "https://devpost.com/rickyhe2006" },
@@ -24,7 +26,7 @@ const channels = [
 
 function ContactPage() {
   const [copied, setCopied] = useState<string | null>(null);
-  const [formState, setFormState] = useState<"idle" | "submitting" | "success">("idle");
+  const [formState, setFormState] = useState<"idle" | "opening">("idle");
   const formRef = useRef<HTMLFormElement>(null);
 
   const copy = async (val: string) => {
@@ -37,19 +39,21 @@ function ContactPage() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setFormState("submitting");
-
-    // Using Formspree - replace with your form ID
     const form = formRef.current;
     if (!form) return;
 
-    fetch("https://formspree.io/f/YOUR_FORMSPREE_ID", {
-      method: "POST",
-      body: new FormData(form),
-      headers: { Accept: "application/json" },
-    })
-      .then(() => setFormState("success"))
-      .catch(() => setFormState("idle"));
+    const data = new FormData(form);
+    const name = String(data.get("name") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const subject = String(data.get("subject") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
+
+    const body = [`From: ${name} <${email}>`, "", message].join("\n");
+    const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    setFormState("opening");
+    window.location.href = mailto;
+    setTimeout(() => setFormState("idle"), 800);
   };
 
   return (
@@ -61,94 +65,82 @@ function ContactPage() {
         </h1>
         <p className="mt-4 max-w-2xl text-muted-foreground">
           Open to internships, research collaborations, and hackathon teams.
-          Use the form below or reach out via my social profiles.
+          Send a message, download my resume, or reach out on socials.
         </p>
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noreferrer"
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+        >
+          Download resume
+          <span aria-hidden>↓</span>
+        </a>
       </motion.div>
 
-      {/* Contact Form */}
       <div className="mt-12">
         <GlowCard className="p-8">
-          {formState === "success" ? (
-            <div className="text-center py-8">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
-                <svg className="h-8 w-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-foreground">Message sent!</h3>
-              <p className="mt-2 text-muted-foreground">I'll get back to you as soon as possible.</p>
-            </div>
-          ) : (
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="space-y-1.5">
-                  <label htmlFor="name" className="text-sm font-medium text-foreground">Name</label>
-                  <input
-                    id="name"
-                    name="name"
-                    required
-                    type="text"
-                    placeholder="Your name"
-                    className="flex h-10 w-full rounded-md border border-border bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label htmlFor="email" className="text-sm font-medium text-foreground">Email</label>
-                  <input
-                    id="email"
-                    name="email"
-                    required
-                    type="email"
-                    placeholder="you@example.com"
-                    className="flex h-10 w-full rounded-md border border-border bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  />
-                </div>
-              </div>
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+            <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-1.5">
-                <label htmlFor="subject" className="text-sm font-medium text-foreground">Subject</label>
+                <label htmlFor="name" className="text-sm font-medium text-foreground">Name</label>
                 <input
-                  id="subject"
-                  name="subject"
+                  id="name"
+                  name="name"
                   required
                   type="text"
-                  placeholder="How can I help?"
-                  className="flex h-10 w-full rounded-md border border-border bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  placeholder="Your name"
+                  className="flex h-10 w-full rounded-md border border-border bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 />
               </div>
               <div className="space-y-1.5">
-                <label htmlFor="message" className="text-sm font-medium text-foreground">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
+                <label htmlFor="email" className="text-sm font-medium text-foreground">Email</label>
+                <input
+                  id="email"
+                  name="email"
                   required
-                  rows={4}
-                  placeholder="Tell me about your project..."
-                  className="flex w-full rounded-md border border-border bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-none"
+                  type="email"
+                  placeholder="you@example.com"
+                  className="flex h-10 w-full rounded-md border border-border bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 />
               </div>
-              <button
-                type="submit"
-                disabled={formState === "submitting"}
-                className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {formState === "submitting" ? (
-                  <span className="flex items-center gap-2">
-                    <svg className="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Sending...
-                  </span>
-                ) : (
-                  "Send Message"
-                )}
-              </button>
-            </form>
-          )}
+            </div>
+            <div className="space-y-1.5">
+              <label htmlFor="subject" className="text-sm font-medium text-foreground">Subject</label>
+              <input
+                id="subject"
+                name="subject"
+                required
+                type="text"
+                placeholder="How can I help?"
+                className="flex h-10 w-full rounded-md border border-border bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label htmlFor="message" className="text-sm font-medium text-foreground">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows={4}
+                placeholder="Tell me about your project..."
+                className="flex w-full resize-none rounded-md border border-border bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={formState === "opening"}
+              className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {formState === "opening" ? "Opening mail…" : "Send Message"}
+            </button>
+            <p className="text-xs text-muted-foreground">
+              Opens your email app with this message addressed to me.
+            </p>
+          </form>
         </GlowCard>
       </div>
 
-      {/* Alternative Contact Methods */}
       <p className="mt-10 text-center text-sm text-muted-foreground">
         Prefer to reach out directly?
       </p>
@@ -173,6 +165,7 @@ function ContactPage() {
                   Open
                 </a>
                 <button
+                  type="button"
                   onClick={() => copy(c.value)}
                   className="rounded-full border border-border px-4 py-1.5 text-xs hover:border-primary hover:text-primary"
                 >

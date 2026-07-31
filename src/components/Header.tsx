@@ -38,6 +38,16 @@ export function Header() {
               </Link>
             </li>
           ))}
+          <li className="ml-1">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex rounded-full border border-primary/40 bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary transition-colors hover:bg-primary/20"
+            >
+              Resume
+            </a>
+          </li>
         </ul>
       </nav>
     </header>

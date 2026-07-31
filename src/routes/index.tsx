@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import profilePhoto from "@/assets/profilepic.jpeg";
+import { GlowCard } from "@/components/GlowCard";
+import { projects } from "@/lib/projects";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -20,11 +22,11 @@ const skills = [
   "Geospatial", "Streamlit", "Databricks", "ML", "LLMs",
 ];
 
-function Home() {
+const featured = projects.filter((p) => p.featured).slice(0, 3);
 
+function Home() {
   return (
     <div className="relative">
-      {/* Hero */}
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 pt-20 pb-24 md:grid-cols-[1.2fr_1fr]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -50,6 +52,14 @@ function Home() {
               View projects
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </Link>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-border px-6 py-3 text-sm font-semibold transition-colors hover:border-primary hover:text-primary"
+            >
+              Resume
+            </a>
             <Link
               to="/contact"
               className="rounded-full border border-border px-6 py-3 text-sm font-semibold transition-colors hover:border-primary hover:text-primary"
@@ -79,15 +89,67 @@ function Home() {
         </motion.div>
       </section>
 
-      {/* Skills marquee */}
-      <section className="relative mt-24 overflow-hidden border-y border-border py-8" aria-label="Skills">
-        <div className="flex w-max gap-10 marquee">
+      <section className="mx-auto max-w-6xl px-6 pb-8" aria-labelledby="featured-heading">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-primary">Selected work</p>
+            <h2 id="featured-heading" className="mt-2 font-display text-3xl font-bold sm:text-4xl">
+              Featured <span className="text-gradient">wins</span>
+            </h2>
+          </div>
+          <Link
+            to="/projects"
+            className="text-sm font-medium text-primary transition-all hover:gap-2 inline-flex items-center gap-1"
+          >
+            All projects →
+          </Link>
+        </div>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {featured.map((p, i) => (
+            <motion.div
+              key={p.slug}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.45, delay: i * 0.06 }}
+            >
+              <Link to="/projects" className="block h-full">
+                <GlowCard className="h-full transition-colors hover:border-primary/40">
+                  <div className="flex flex-wrap items-center gap-2">
+                    {p.badge && (
+                      <span className="rounded-full bg-primary/15 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                        {p.badge}
+                      </span>
+                    )}
+                    <span className="text-xs text-muted-foreground">{p.date}</span>
+                  </div>
+                  <h3 className="mt-3 font-display text-lg font-semibold leading-snug">{p.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground line-clamp-3">{p.summary}</p>
+                  <p className="mt-4 text-xs font-medium text-primary">View details →</p>
+                </GlowCard>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <section className="relative mt-16 overflow-hidden border-y border-border py-8" aria-label="Skills">
+        <div className="flex w-max gap-10 marquee" aria-hidden>
           {[...skills, ...skills].map((s, i) => (
-            <span key={i} tabIndex={0} role="text" className="font-display text-2xl text-muted-foreground/70 whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:rounded-md">
+            <span
+              key={i}
+              className="font-display text-2xl text-muted-foreground/70 whitespace-nowrap"
+            >
               {s} <span className="text-primary">·</span>
             </span>
           ))}
         </div>
+        <ul className="sr-only">
+          {skills.map((s) => (
+            <li key={s}>{s}</li>
+          ))}
+        </ul>
       </section>
     </div>
   );

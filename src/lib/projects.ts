@@ -121,6 +121,7 @@ export const projects: Project[] = [
       { label: "Watch demo", href: "https://www.youtube.com/watch?v=_F4XSoR5PrU" },
       { label: "View on GitHub", href: "https://github.com/ricky-he2006/Qwen-Cloud-Hackathon" },
     ],
+    featured: true,
   },
   {
     slug: "buckeyequest",
@@ -226,6 +227,7 @@ export const projects: Project[] = [
       "VaR / ES",
     ],
     links: [{ label: "View on GitHub", href: "https://github.com/DanielHu2018/CLARA" }],
+    featured: true,
   },
   {
     slug: "nyc-housing",

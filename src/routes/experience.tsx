@@ -19,7 +19,7 @@ const experienceItems = [
     slug: "aimed-lab-intern",
     title: "Undergraduate Research Intern — AIMed Lab",
     date: "Summer 2026 – Present",
-    institution: "The Ohio State University | Department of Biomedical",
+    institution: "The Ohio State University | Department of Biomedical Informatics",
     mentor: "Dr. Ping Zhang",
     badge: "Research",
     summary:
