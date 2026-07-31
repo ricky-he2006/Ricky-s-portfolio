@@ -114,7 +114,7 @@ function Home() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.45, delay: i * 0.06 }}
             >
-              <Link to="/projects" className="block h-full">
+              <Link to="/projects" hash={p.slug} className="block h-full">
                 <GlowCard className="h-full transition-colors hover:border-primary/40">
                   <div className="flex flex-wrap items-center gap-2">
                     {p.badge && (
@@ -126,7 +126,7 @@ function Home() {
                   </div>
                   <h3 className="mt-3 font-display text-lg font-semibold leading-snug">{p.title}</h3>
                   <p className="mt-2 text-sm text-muted-foreground line-clamp-3">{p.summary}</p>
-                  <p className="mt-4 text-xs font-medium text-primary">View details →</p>
+                  <p className="mt-4 text-xs font-medium text-primary">Open project →</p>
                 </GlowCard>
               </Link>
             </motion.div>

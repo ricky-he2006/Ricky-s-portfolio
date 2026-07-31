@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GlowCard } from "@/components/GlowCard";
 import { projects } from "@/lib/projects";
 import { cn } from "@/lib/utils";
@@ -18,9 +18,41 @@ export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
 });
 
+function slugFromHash() {
+  if (typeof window === "undefined") return null;
+  const hash = window.location.hash.replace(/^#/, "");
+  return projects.some((p) => p.slug === hash) ? hash : null;
+}
+
 function ProjectsPage() {
-  const featured = projects.find((p) => p.featured)?.slug ?? null;
-  const [openSlug, setOpenSlug] = useState<string | null>(featured);
+  const defaultOpen = projects.find((p) => p.featured)?.slug ?? null;
+  const [openSlug, setOpenSlug] = useState<string | null>(() => slugFromHash() ?? defaultOpen);
+
+  useEffect(() => {
+    const applyHash = () => {
+      const fromHash = slugFromHash();
+      if (fromHash) {
+        setOpenSlug(fromHash);
+        requestAnimationFrame(() => {
+          document.getElementById(fromHash)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+    };
+
+    applyHash();
+    window.addEventListener("hashchange", applyHash);
+    return () => window.removeEventListener("hashchange", applyHash);
+  }, []);
+
+  const toggle = (slug: string) => {
+    const next = openSlug === slug ? null : slug;
+    setOpenSlug(next);
+    if (typeof window === "undefined") return;
+    const url = new URL(window.location.href);
+    if (next) url.hash = next;
+    else url.hash = "";
+    window.history.replaceState(null, "", url.pathname + url.search + url.hash);
+  };
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-20">
@@ -45,10 +77,12 @@ function ProjectsPage() {
           return (
             <motion.div
               key={p.slug}
+              id={p.slug}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.45, delay: i * 0.04 }}
+              className="scroll-mt-28"
             >
               <GlowCard
                 className={cn(
@@ -61,14 +95,14 @@ function ProjectsPage() {
                   aria-expanded={isOpen}
                   aria-controls={`project-${p.slug}`}
                   id={`project-trigger-${p.slug}`}
-                  onClick={() => setOpenSlug(isOpen ? null : p.slug)}
+                  onClick={() => toggle(p.slug)}
                   className="flex w-full cursor-pointer items-start gap-3 p-5 text-left outline-none transition-colors hover:bg-primary/[0.03] focus-visible:bg-primary/[0.04] sm:gap-4 sm:p-6"
                 >
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
-                      <h3 className="font-display text-lg font-semibold leading-snug sm:text-xl">
+                      <h2 className="font-display text-lg font-semibold leading-snug sm:text-xl">
                         {p.title}
-                      </h3>
+                      </h2>
                       {p.badge && (
                         <span className="shrink-0 rounded-full bg-primary/15 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
                           {p.badge}
