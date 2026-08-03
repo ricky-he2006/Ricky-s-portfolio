@@ -15,7 +15,7 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-const CONTACT_EMAIL = "he.2497@buckeyemail.osu.edu";
+const CONTACT_EMAIL = "he.2497@osu.edu";
 
 const channels = [
   { label: "Email (School)", value: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },

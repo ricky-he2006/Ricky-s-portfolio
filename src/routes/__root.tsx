@@ -22,7 +22,7 @@ const structuredData = {
   "description": "Data Analytics undergraduate at Ohio State, specializing in Biomedical & Public Health Analytics. AI/ML researcher and hackathon winner building predictive models and interactive data visualizations.",
   "jobTitle": "Data Analytics Student",
   "url": "https://rickyhe2006.com",
-  "email": "mailto:he.2497@buckeyemail.osu.edu",
+  "email": "mailto:he.2497@osu.edu",
   "sameAs": [
     "https://www.linkedin.com/in/rickyhe2006",
     "https://github.com/ricky-he2006",
