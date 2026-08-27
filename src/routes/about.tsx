@@ -37,7 +37,7 @@ function AboutPage() {
         <p className="text-xs uppercase tracking-[0.3em] text-primary">About</p>
         <h1 className="sr-only">About — Ruiqi (Ricky) He</h1>
         <p className="mt-6 max-w-3xl text-lg text-muted-foreground">
-          I am Ruiqi (Ricky) He. I am a Data Analytics undergrad at Ohio State's ASC Honors
+          I am Ruiqi (Ricky) He, a Data Analytics undergrad at Ohio State's ASC Honors
           College, specializing in Biomedical & Public Health Analytics with a Business minor.
         </p>
       </motion.div>
