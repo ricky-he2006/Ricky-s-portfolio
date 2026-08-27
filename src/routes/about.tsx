@@ -35,14 +35,10 @@ function AboutPage() {
     <div className="mx-auto max-w-5xl px-6 py-20">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
         <p className="text-xs uppercase tracking-[0.3em] text-primary">About</p>
-        <h1 className="mt-3 font-display text-5xl font-bold sm:text-6xl">
-          A data person <span className="text-gradient">obsessed with impact</span>.
-        </h1>
+        <h1 className="sr-only">About — Ruiqi (Ricky) He</h1>
         <p className="mt-6 max-w-3xl text-lg text-muted-foreground">
-          I'm Ruiqi (Ricky) He — a Data Analytics undergrad at Ohio State's ASC Honors
-          College, specializing in Biomedical & Public Health Analytics with a Business
-          minor. I love turning messy real-world data into tools clinicians, investors,
-          and students can actually use.
+          I am Ruiqi (Ricky) He. I am a Data Analytics undergrad at Ohio State's ASC Honors
+          College, specializing in Biomedical & Public Health Analytics with a Business minor.
         </p>
       </motion.div>
 

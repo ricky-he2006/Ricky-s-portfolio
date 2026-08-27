@@ -38,8 +38,7 @@ function Home() {
             Data Analytics @ The Ohio State University 2028
           </span>
           <h1 className="mt-5 font-display text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl">
-            Hi, I'm <span className="text-gradient">Ricky</span>.
-            <br />I turn data into <span className="text-gradient">decisions</span>.
+            Hi, I'm <span className="text-gradient">Ricky</span>
           </h1>
           <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
             Building AI-powered ML pipelines that analyze multi-modal physiological signals to predict cognitive decline. Biomedical data scientist turning complex health data into actionable insights for clinicians and researchers.

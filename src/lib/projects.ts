@@ -124,62 +124,6 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: "buckeyequest",
-    title: "BuckeyeQuest",
-    date: "Summer 2026",
-    badge: "OpenAI Build Week · Judging",
-    summary:
-      "Grade-aware learning days for elementary teachers — student missions feed evidence-based next steps.",
-    details: [],
-    sections: [
-      {
-        title: "The Challenge",
-        body: "Teachers spend a lot of time planning lessons and monitoring student progress, but those tasks are often split across separate tools. I wanted one platform that connected both — helping teachers create grade-aware plans while giving them meaningful insight into how students are learning in the moment.",
-      },
-      {
-        title: "What I Built",
-        body: "BuckeyeQuest is an AI-powered learning platform for Ohio elementary classrooms. Teachers generate grade-level plans, organize a full-term curriculum, manage the roster, and assign interactive missions across reading, math, science, history, and creative activities. Students complete branching missions; the dashboard turns those choices into evidence-based recommendations about who may need support and why. An AI classroom assistant answers progress questions from classroom evidence — and AI can suggest differentiation, but teachers always approve before anything changes.",
-      },
-      {
-        title: "How I Built It",
-        body: "Built end to end: React, TypeScript, and Vite as a local-first PWA with offline support; Node.js/Express backend that keeps model credentials off the client. Live AI via NVIDIA Llama 3.3 Nemotron Super 49B v1.5, plus deterministic fallbacks so the demo loop works without a model or network. Student names are anonymized before AI calls. Smoke tests and GitHub Actions verify the teacher-to-student workflow after every change.",
-      },
-      {
-        title: "Challenges",
-        body: "Balancing AI assistance with teacher control meant every differentiation suggestion requires approval — educators stay in the driver’s seat. Reliability without live AI was another hurdle; deterministic fallbacks and offline support keep the core classroom experience running when models or connectivity drop out.",
-      },
-      {
-        title: "Outcome",
-        body: "Submitted to OpenAI Build Week (Education track). BuckeyeQuest shows how AI can support teachers without replacing judgment — planning, interactive missions, and classroom insights in one loop so instructional decisions stay informed and student-centered.",
-      },
-    ],
-    stats: [
-      { value: "5", label: "Subjects" },
-      { value: "PWA", label: "Offline-ready" },
-      { value: "Gate", label: "Teacher approve" },
-    ],
-    bullets: [
-      "Full-term planner, roster, and “Ask your class” evidence-based assistant",
-      "Teacher-assigned missions with branching choices across five subjects",
-      "AI differentiation suggestions require teacher approval",
-      "QR/class-code join; local-first PWA with offline fallbacks",
-    ],
-    tech: [
-      "React",
-      "TypeScript",
-      "Vite",
-      "Node.js",
-      "Express",
-      "NVIDIA Nemotron",
-      "PWA",
-      "GitHub Actions",
-    ],
-    links: [
-      { label: "Watch demo", href: "https://www.youtube.com/watch?v=sHcZ9Kp4thA" },
-      { label: "View on GitHub", href: "https://github.com/ricky-he2006/BuckeyeQuest" },
-    ],
-  },
-  {
     slug: "clara",
     title: "CLARA — Clairvoyant Loss Avoidance & Risk Advisor",
     date: "Spring 2026",
@@ -417,6 +361,62 @@ export const projects: Project[] = [
       "EdTech",
     ],
     links: [{ label: "Watch demo", href: "https://www.youtube.com/watch?v=QfKHQ1_TzIA&t=7s" }],
+  },
+  {
+    slug: "buckeyequest",
+    title: "BuckeyeQuest",
+    date: "Summer 2026",
+    badge: "OpenAI Build Week",
+    summary:
+      "Grade-aware learning days for elementary teachers — student missions feed evidence-based next steps.",
+    details: [],
+    sections: [
+      {
+        title: "The Challenge",
+        body: "Teachers spend a lot of time planning lessons and monitoring student progress, but those tasks are often split across separate tools. I wanted one platform that connected both — helping teachers create grade-aware plans while giving them meaningful insight into how students are learning in the moment.",
+      },
+      {
+        title: "What I Built",
+        body: "BuckeyeQuest is an AI-powered learning platform for Ohio elementary classrooms. Teachers generate grade-level plans, organize a full-term curriculum, manage the roster, and assign interactive missions across reading, math, science, history, and creative activities. Students complete branching missions; the dashboard turns those choices into evidence-based recommendations about who may need support and why. An AI classroom assistant answers progress questions from classroom evidence — and AI can suggest differentiation, but teachers always approve before anything changes.",
+      },
+      {
+        title: "How I Built It",
+        body: "Built end to end: React, TypeScript, and Vite as a local-first PWA with offline support; Node.js/Express backend that keeps model credentials off the client. Live AI via NVIDIA Llama 3.3 Nemotron Super 49B v1.5, plus deterministic fallbacks so the demo loop works without a model or network. Student names are anonymized before AI calls. Smoke tests and GitHub Actions verify the teacher-to-student workflow after every change.",
+      },
+      {
+        title: "Challenges",
+        body: "Balancing AI assistance with teacher control meant every differentiation suggestion requires approval — educators stay in the driver’s seat. Reliability without live AI was another hurdle; deterministic fallbacks and offline support keep the core classroom experience running when models or connectivity drop out.",
+      },
+      {
+        title: "Outcome",
+        body: "Submitted to OpenAI Build Week (Education track). BuckeyeQuest shows how AI can support teachers without replacing judgment — planning, interactive missions, and classroom insights in one loop so instructional decisions stay informed and student-centered.",
+      },
+    ],
+    stats: [
+      { value: "5", label: "Subjects" },
+      { value: "PWA", label: "Offline-ready" },
+      { value: "Gate", label: "Teacher approve" },
+    ],
+    bullets: [
+      "Full-term planner, roster, and “Ask your class” evidence-based assistant",
+      "Teacher-assigned missions with branching choices across five subjects",
+      "AI differentiation suggestions require teacher approval",
+      "QR/class-code join; local-first PWA with offline fallbacks",
+    ],
+    tech: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Node.js",
+      "Express",
+      "NVIDIA Nemotron",
+      "PWA",
+      "GitHub Actions",
+    ],
+    links: [
+      { label: "Watch demo", href: "https://www.youtube.com/watch?v=sHcZ9Kp4thA" },
+      { label: "View on GitHub", href: "https://github.com/ricky-he2006/BuckeyeQuest" },
+    ],
   },
   {
     slug: "sea-phages",
