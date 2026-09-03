@@ -216,6 +216,7 @@ export const projects: Project[] = [
       "Computer Vision",
       "Healthcare AI",
     ],
+    featured: true,
   },
   {
     slug: "ai-study-planner",
