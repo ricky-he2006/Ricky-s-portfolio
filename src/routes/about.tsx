@@ -15,9 +15,29 @@ export const Route = createFileRoute("/about")({
 });
 
 const skillGroups = [
-  { label: "Languages", items: ["Java", "Python", "R", "C++", "SQL"] },
-  { label: "ML / AI", items: ["Pandas", "scikit-learn", "Random Forest", "TensorFlow", "PyTorch", "LangChain", "LLMs"] },
-  { label: "Tools", items: ["RAPIDS cuDF", "NVIDIA DGX", "Streamlit", "Databricks", "Microsoft Office"] },
+  {
+    label: "Programming Languages",
+    items: ["Python", "SQL", "R", "Java", "C++", "TypeScript/JavaScript"],
+  },
+  {
+    label: "Machine Learning & AI",
+    items: [
+      "PyTorch",
+      "scikit-learn",
+      "Pandas",
+      "Prompt engineering",
+      "LLMs (Gemini, Qwen, IBM watsonx)",
+      "NVIDIA RAPIDS cuDF",
+    ],
+  },
+  {
+    label: "Data Engineering & Analytics",
+    items: ["Databricks", "Geospatial analysis", "Large-scale preprocessing", "Monte Carlo / VaR–ES"],
+  },
+  {
+    label: "Software & Tools",
+    items: ["FastAPI", "React", "Node.js/Express", "Docker", "Git/GitHub Actions", "NVIDIA DGX"],
+  },
 ];
 
 const honors = ["National Buckeye Scholar", "Trustees Scholarship", "Dean's List", "PA State Academic Team Champion"];
@@ -72,7 +92,7 @@ function AboutPage() {
 
         <GlowCard className="md:col-span-2">
           <h2 className="font-display text-xl font-semibold">Skills</h2>
-          <div className="mt-5 grid gap-5 sm:grid-cols-3">
+          <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {skillGroups.map((g) => (
               <div key={g.label}>
                 <p className="text-xs uppercase tracking-wider text-primary">{g.label}</p>
@@ -101,7 +121,7 @@ function AboutPage() {
         </GlowCard>
 
         <GlowCard>
-          <h2 className="font-display text-xl font-semibold">Languages</h2>
+          <h2 className="font-display text-xl font-semibold">Spoken Languages</h2>
           <ul className="mt-4 space-y-2 text-sm">
             <li>🇺🇸 English — Native</li>
             <li>🇨🇳 Chinese — Native</li>

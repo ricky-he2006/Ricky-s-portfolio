@@ -17,9 +17,9 @@ export const Route = createFileRoute("/")({
 });
 
 const skills = [
-  "Python", "R", "Java", "C++", "SQL", "Pandas", "scikit-learn",
-  "TensorFlow", "PyTorch", "LangChain", "Gemini", "RAPIDS cuDF",
-  "Geospatial", "Streamlit", "Databricks", "ML", "LLMs",
+  "Python", "SQL", "R", "Java", "C++", "TypeScript", "PyTorch", "scikit-learn",
+  "Pandas", "FastAPI", "React", "Docker", "Gemini", "Qwen", "RAPIDS cuDF",
+  "Databricks", "Geospatial", "LLMs", "GitHub Actions",
 ];
 
 const featured = projects.filter((p) => p.featured).slice(0, 3);
