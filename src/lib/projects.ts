@@ -67,63 +67,6 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: "research-society",
-    title: "Research Society",
-    date: "Summer 2026",
-    badge: "Qwen Cloud · Judging",
-    summary:
-      "Five Qwen agents debate a paper’s methods, novelty, and gaps live — disagreements preserved.",
-    details: [],
-    sections: [
-      {
-        title: "The Challenge",
-        body: "Research is moving faster than ever, and keeping up with new papers is exhausting. AI summaries often feel like a black box — a score with little insight into why a paper is strong or weak. I wanted a review process users could watch: transparent reasoning, competing viewpoints, and genuine disagreement instead of a single opaque answer.",
-      },
-      {
-        title: "What I Built",
-        body: "Research Society is a multi-agent platform where five specialized Qwen-powered reviewers analyze a paper, form independent opinions, and debate in real time before reaching a conclusion. An Executive Moderator plus Structure Analyst, Contribution Scout, Methodology Critic, and Literature Reviewer challenge each other, vote on consensus, and keep unresolved disagreements in a dissent ledger — so users see where opinions truly differ, not just a final score.",
-      },
-      {
-        title: "How I Built It",
-        body: "Built end to end: Python/FastAPI backend with a custom multi-agent debate framework streaming every round over WebSockets; React frontend for the live chamber, concept maps, and review summaries. Agents run on Qwen via Alibaba Cloud DashScope. Paper ingest supports PDF, arXiv, DOI, URL, and natural-language search across OpenAlex, PubMed, and Crossref. Containerized with Docker and deployed on Alibaba Cloud ECS as one app serving UI, API, and live debate.",
-      },
-      {
-        title: "Challenges",
-        body: "The hardest part was getting agents to genuinely disagree instead of collapsing into the same summary. Distinct roles, careful prompts, and a tuned debate flow let real tension develop before consensus. Live sync was another hurdle — WebSocket event ordering keeps every hand-raise, rebuttal, and vote appearing in the right sequence on the frontend.",
-      },
-      {
-        title: "Outcome",
-        body: "Submitted to the Global AI Hackathon Series with Qwen Cloud (Track 3: Agent Society). Research Society shows how multi-agent orchestration can make AI-assisted paper review more transparent and trustworthy — users watch the debate, understand competing views, and see where experts would reasonably disagree.",
-      },
-    ],
-    stats: [
-      { value: "5", label: "Agents" },
-      { value: "Live", label: "WebSocket" },
-      { value: "ECS", label: "Alibaba Cloud" },
-    ],
-    bullets: [
-      "Upload PDF, arXiv ID, DOI, URL — or search in plain English",
-      "Watch the live debate: hand-raising, rebuttals, consensus voting",
-      "Concept maps, claim fact-check, and society-vs-solo benchmark",
-      "Dissent ledger preserves unresolved disagreements",
-    ],
-    tech: [
-      "Python",
-      "FastAPI",
-      "React",
-      "WebSockets",
-      "Qwen Cloud",
-      "DashScope",
-      "Docker",
-      "Alibaba Cloud ECS",
-    ],
-    links: [
-      { label: "Watch demo", href: "https://www.youtube.com/watch?v=_F4XSoR5PrU" },
-      { label: "View on GitHub", href: "https://github.com/ricky-he2006/Qwen-Cloud-Hackathon" },
-    ],
-    featured: true,
-  },
-  {
     slug: "clara",
     title: "CLARA — Clairvoyant Loss Avoidance & Risk Advisor",
     date: "Spring 2026",
@@ -227,50 +170,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "talkora",
-    title: "Talkora — Gemini Hackathon",
-    date: "Spring 2026",
-    summary:
-      "Real-time voice language learning powered by the Gemini Live API.",
-    details: [],
-    sections: [
-      {
-        title: "The Challenge",
-        body: "Most language apps lean on typing and scripted drills, even though real learning happens in conversation. I wanted a voice-first experience where learners practice speaking naturally, get immediate feedback, and build confidence through dialogue — not text prompts.",
-      },
-      {
-        title: "What I Built",
-        body: "Talkora is a real-time AI language tutor that turns practice into a live voice call. Learners speak with AI personas that adapt CEFR difficulty (A1–C2) as they improve, while pronunciation and grammar feedback arrive without breaking conversational flow — more like a tutor or language partner than a chat form.",
-      },
-      {
-        title: "How I Built It",
-        body: "Built with Google AI Studio and the Gemini Live API. The Web Audio API streams mic audio between browser and Gemini for a low-latency conversation loop. Heavy focus on prompt engineering — system instructions, personas, and adaptive CEFR flows. Leveraged Gemini’s realtime stack to iterate quickly without heavy backend infrastructure.",
-      },
-      {
-        title: "Challenges",
-        body: "Balancing natural dialogue with useful learning was hard — feedback had to help without turning the call into a lecture. Latency was another hurdle; the stream needed to feel like a phone call, not a lagged voice assistant.",
-      },
-      {
-        title: "Outcome",
-        body: "Talkora shows how realtime multimodal AI and careful prompting can make language practice feel human: adaptive conversations, immediate contextual feedback, and a fast path from idea to interactive voice app.",
-      },
-    ],
-    bullets: [
-      "Speak with adaptive AI personas across CEFR levels A1–C2",
-      "Live pronunciation and grammar feedback without breaking flow",
-      "Low-latency browser ↔ Gemini audio via Web Audio API",
-      "Rapid build and iteration in Google AI Studio",
-    ],
-    tech: [
-      "Google AI Studio",
-      "Gemini Live API",
-      "Web Audio API",
-      "Prompt Engineering",
-      "Realtime Audio",
-    ],
-    links: [{ label: "Watch demo", href: "https://www.youtube.com/watch?v=k2EeAYEYLwk" }],
-  },
-  {
     slug: "doctor-loop",
     title: "Doctor-in-the-Loop AI System",
     date: "Autumn 2025",
@@ -361,6 +260,106 @@ export const projects: Project[] = [
       "EdTech",
     ],
     links: [{ label: "Watch demo", href: "https://www.youtube.com/watch?v=QfKHQ1_TzIA&t=7s" }],
+  },
+  {
+    slug: "research-society",
+    title: "Research Society",
+    date: "Summer 2026",
+    badge: "Qwen Cloud Hackathon",
+    summary:
+      "Five Qwen agents debate a paper’s methods, novelty, and gaps live — disagreements preserved.",
+    details: [],
+    sections: [
+      {
+        title: "The Challenge",
+        body: "Research is moving faster than ever, and keeping up with new papers is exhausting. AI summaries often feel like a black box — a score with little insight into why a paper is strong or weak. I wanted a review process users could watch: transparent reasoning, competing viewpoints, and genuine disagreement instead of a single opaque answer.",
+      },
+      {
+        title: "What I Built",
+        body: "Research Society is a multi-agent platform where five specialized Qwen-powered reviewers analyze a paper, form independent opinions, and debate in real time before reaching a conclusion. An Executive Moderator plus Structure Analyst, Contribution Scout, Methodology Critic, and Literature Reviewer challenge each other, vote on consensus, and keep unresolved disagreements in a dissent ledger — so users see where opinions truly differ, not just a final score.",
+      },
+      {
+        title: "How I Built It",
+        body: "Built end to end: Python/FastAPI backend with a custom multi-agent debate framework streaming every round over WebSockets; React frontend for the live chamber, concept maps, and review summaries. Agents run on Qwen via Alibaba Cloud DashScope. Paper ingest supports PDF, arXiv, DOI, URL, and natural-language search across OpenAlex, PubMed, and Crossref. Containerized with Docker and deployed on Alibaba Cloud ECS as one app serving UI, API, and live debate.",
+      },
+      {
+        title: "Challenges",
+        body: "The hardest part was getting agents to genuinely disagree instead of collapsing into the same summary. Distinct roles, careful prompts, and a tuned debate flow let real tension develop before consensus. Live sync was another hurdle — WebSocket event ordering keeps every hand-raise, rebuttal, and vote appearing in the right sequence on the frontend.",
+      },
+      {
+        title: "Outcome",
+        body: "Built for the Global AI Hackathon Series with Qwen Cloud (Track 3: Agent Society). The hackathon has concluded. Research Society shows how multi-agent orchestration can make AI-assisted paper review more transparent — users watch the debate, understand competing views, and see where experts would reasonably disagree.",
+      },
+    ],
+    stats: [
+      { value: "5", label: "Agents" },
+      { value: "Live", label: "WebSocket" },
+      { value: "ECS", label: "Alibaba Cloud" },
+    ],
+    bullets: [
+      "Upload PDF, arXiv ID, DOI, URL — or search in plain English",
+      "Watch the live debate: hand-raising, rebuttals, consensus voting",
+      "Concept maps, claim fact-check, and society-vs-solo benchmark",
+      "Dissent ledger preserves unresolved disagreements",
+    ],
+    tech: [
+      "Python",
+      "FastAPI",
+      "React",
+      "WebSockets",
+      "Qwen Cloud",
+      "DashScope",
+      "Docker",
+      "Alibaba Cloud ECS",
+    ],
+    links: [
+      { label: "Watch demo", href: "https://www.youtube.com/watch?v=_F4XSoR5PrU" },
+      { label: "View on GitHub", href: "https://github.com/ricky-he2006/Qwen-Cloud-Hackathon" },
+    ],
+  },
+  {
+    slug: "talkora",
+    title: "Talkora — Gemini Hackathon",
+    date: "Spring 2026",
+    summary:
+      "Real-time voice language learning powered by the Gemini Live API.",
+    details: [],
+    sections: [
+      {
+        title: "The Challenge",
+        body: "Most language apps lean on typing and scripted drills, even though real learning happens in conversation. I wanted a voice-first experience where learners practice speaking naturally, get immediate feedback, and build confidence through dialogue — not text prompts.",
+      },
+      {
+        title: "What I Built",
+        body: "Talkora is a real-time AI language tutor that turns practice into a live voice call. Learners speak with AI personas that adapt CEFR difficulty (A1–C2) as they improve, while pronunciation and grammar feedback arrive without breaking conversational flow — more like a tutor or language partner than a chat form.",
+      },
+      {
+        title: "How I Built It",
+        body: "Built with Google AI Studio and the Gemini Live API. The Web Audio API streams mic audio between browser and Gemini for a low-latency conversation loop. Heavy focus on prompt engineering — system instructions, personas, and adaptive CEFR flows. Leveraged Gemini’s realtime stack to iterate quickly without heavy backend infrastructure.",
+      },
+      {
+        title: "Challenges",
+        body: "Balancing natural dialogue with useful learning was hard — feedback had to help without turning the call into a lecture. Latency was another hurdle; the stream needed to feel like a phone call, not a lagged voice assistant.",
+      },
+      {
+        title: "Outcome",
+        body: "Talkora shows how realtime multimodal AI and careful prompting can make language practice feel human: adaptive conversations, immediate contextual feedback, and a fast path from idea to interactive voice app.",
+      },
+    ],
+    bullets: [
+      "Speak with adaptive AI personas across CEFR levels A1–C2",
+      "Live pronunciation and grammar feedback without breaking flow",
+      "Low-latency browser ↔ Gemini audio via Web Audio API",
+      "Rapid build and iteration in Google AI Studio",
+    ],
+    tech: [
+      "Google AI Studio",
+      "Gemini Live API",
+      "Web Audio API",
+      "Prompt Engineering",
+      "Realtime Audio",
+    ],
+    links: [{ label: "Watch demo", href: "https://www.youtube.com/watch?v=k2EeAYEYLwk" }],
   },
   {
     slug: "buckeyequest",
