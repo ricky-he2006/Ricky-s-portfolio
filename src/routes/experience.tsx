@@ -31,6 +31,17 @@ const experienceItems = [
     ],
     tech: ["Python", "PyTorch", "ML Pipelines", "Polysomnography", "PhysioNet"],
   },
+  {
+    slug: "cao-lab-ra",
+    title: "Research Assistant",
+    date: "Sep 2026 – Present",
+    institution: "Dr. Cao's Lab — The Ohio State University",
+    badge: "Research",
+    summary:
+      "Supporting CardioAI research and development.",
+    bullets: [],
+    tech: [],
+  },
 ];
 
 function ExperiencePage() {
