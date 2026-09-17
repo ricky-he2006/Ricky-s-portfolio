@@ -16,6 +16,17 @@ export const Route = createFileRoute("/experience")({
 
 const experienceItems = [
   {
+    slug: "cao-lab-ra",
+    title: "Research Assistant",
+    date: "Sep 2026 – Present",
+    institution: "Dr. Cao's Lab — The Ohio State University",
+    badge: "Research",
+    summary:
+      "Supporting CardioAI research and development.",
+    bullets: [],
+    tech: [],
+  },
+  {
     slug: "aimed-lab-intern",
     title: "Undergraduate Research Intern — AIMed Lab",
     date: "Summer 2026 – Present",
@@ -30,17 +41,6 @@ const experienceItems = [
       "Optimizing age-conditioned AUROC scoring metrics to predict diagnoses occurring 1-6 years post-sleep study",
     ],
     tech: ["Python", "PyTorch", "ML Pipelines", "Polysomnography", "PhysioNet"],
-  },
-  {
-    slug: "cao-lab-ra",
-    title: "Research Assistant",
-    date: "Sep 2026 – Present",
-    institution: "Dr. Cao's Lab — The Ohio State University",
-    badge: "Research",
-    summary:
-      "Supporting CardioAI research and development.",
-    bullets: [],
-    tech: [],
   },
 ];
 
