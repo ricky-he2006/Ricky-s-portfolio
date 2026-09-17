@@ -315,6 +315,7 @@ export const projects: Project[] = [
     ],
     links: [
       { label: "Watch demo", href: "https://www.youtube.com/watch?v=_F4XSoR5PrU" },
+      { label: "View on Devpost", href: "https://devpost.com/software/research-society" },
       { label: "View on GitHub", href: "https://github.com/ricky-he2006/Qwen-Cloud-Hackathon" },
     ],
   },
@@ -360,7 +361,10 @@ export const projects: Project[] = [
       "Prompt Engineering",
       "Realtime Audio",
     ],
-    links: [{ label: "Watch demo", href: "https://www.youtube.com/watch?v=k2EeAYEYLwk" }],
+    links: [
+      { label: "Watch demo", href: "https://www.youtube.com/watch?v=k2EeAYEYLwk" },
+      { label: "View on Devpost", href: "https://devpost.com/software/talkora" },
+    ],
   },
   {
     slug: "buckeyequest",
@@ -415,7 +419,66 @@ export const projects: Project[] = [
     ],
     links: [
       { label: "Watch demo", href: "https://www.youtube.com/watch?v=sHcZ9Kp4thA" },
+      { label: "View on Devpost", href: "https://devpost.com/software/buckeyequest" },
       { label: "View on GitHub", href: "https://github.com/ricky-he2006/BuckeyeQuest" },
+    ],
+  },
+  {
+    slug: "aegis",
+    title: "Aegis — Security Automation Pipeline",
+    date: "Spring 2026",
+    badge: "GitLab AI Hackathon",
+    summary:
+      "Multi-agent system that auto-detects, fixes, and commits security vulnerabilities across SAST, DAST, SCA, secrets, and IaC.",
+    details: [],
+    sections: [
+      {
+        title: "The Challenge",
+        body: "Security remediation is usually a slow, manual process — engineers triage scanner findings, write patches, and review them one by one. A single vulnerability might sit unfixed for weeks while teams juggle competing priorities. I wanted to turn that backlog into an automated pipeline that handles the full lifecycle: detect, triage, fix, validate, and commit — with minimal human intervention.",
+      },
+      {
+        title: "What I Built",
+        body: "Aegis plugs into GitLab CI/CD to automatically detect, fix, and validate security vulnerabilities across six domains — SAST, DAST, SCA, secrets detection, and IaC. A master orchestrator discovers every relevant file in a repository, pulls scanner results, and structures findings into structured outputs. Domain-specific agent triads then process each finding in sequence: a Triage agent extracts vulnerable code and context, a Fix agent generates minimal unified diffs, and a Validate agent verifies and commits the changes directly to the branch.",
+      },
+      {
+        title: "How I Built It",
+        body: "All orchestration and agent definitions are YAML-based, designed to run inside GitLab CI/CD. The pipeline uses a linear design: the Master validates input, recursively fetches repository files, and outputs structured findings with exact section headers. Each security domain has a Triage → Fix → Validate flow. The Fix agents are read-only to prevent accidental changes, and the Validate Agent is the only component that can commit. For IaC, the system distinguishes between non-destructive fixes (auto-committed) and destructive changes (escalated to issues instead).",
+      },
+      {
+        title: "Challenges",
+        body: "Three major design hurdles shaped the system. First, the architecture required agents to run in strict sequence, but many domains could theoretically be parallelized — trade-off between execution time and reliable context propagation. Second, agents needed fine-grained permissions: some read-only, others write to commit fixes. Managing those distinct roles within GitLab's CI/CD permission model required careful scoping. Third, ensuring every agent received the correct project ID, branch name, and mode required a consistent context block that propagated through every stage without race conditions.",
+      },
+      {
+        title: "Outcome",
+        body: "Aegis demonstrates how multi-agent systems can automate the full security remediation lifecycle — from detection to auto-committed fixes — transforming a manual backlog into an autonomous pipeline that closes vulnerabilities in minutes rather than weeks.",
+      },
+    ],
+    stats: [
+      { value: "6", label: "Domains" },
+      { value: "T→F→V", label: "Agent flow" },
+      { value: "YAML", label: "Orchestration" },
+    ],
+    bullets: [
+      "SAST, DAST, SCA, secrets, and IaC in one linear pipeline",
+      "Multi-agent triads: Triage extracts, Fix generates diffs, Validate commits",
+      "Read-only fix agents prevent accidental changes",
+      "IaC destructive changes detected and escalated to issues",
+      "Auto-commits safe fixes directly to the branch",
+    ],
+    tech: [
+      "GitLab CI/CD",
+      "YAML",
+      "GitLab API",
+      "Multi-Agent",
+      "SAST",
+      "DAST",
+      "SCA",
+      "IaC",
+    ],
+    links: [
+      { label: "View on Devpost", href: "https://devpost.com/software/aegis-lbxp2f" },
+      { label: "View on GitLab", href: "https://gitlab.com/ericliu206/80315705" },
+      { label: "Watch demo", href: "https://www.youtube.com/watch?v=vGsKLxD9ea8" },
     ],
   },
   {
