@@ -11,7 +11,6 @@ import {
 import appCss from "../styles.css?url";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { MouseGradient } from "@/components/MouseGradient";
 import { DarkModeToggle } from "@/components/DarkModeToggle";
 
 // JSON-LD Structured Data
@@ -127,7 +126,6 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <MouseGradient />
       <div className="relative z-10 flex min-h-screen flex-col">
         <Header />
         <main className="flex-1">

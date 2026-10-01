@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
-import { GlowCard } from "@/components/GlowCard";
+import { Card } from "@/components/Card";
 import { projects } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 
@@ -84,10 +84,11 @@ function ProjectsPage() {
               transition={{ duration: 0.45, delay: i * 0.04 }}
               className="scroll-mt-28"
             >
-              <GlowCard
+              <Card
+                hover={false}
                 className={cn(
-                  "p-0 transition-[border-color,box-shadow] duration-300",
-                  isOpen && "border-primary/45 shadow-[0_0_40px_-12px_oklch(0.82_0.14_200/0.35)]",
+                  "p-0 transition-colors duration-300",
+                  isOpen && "border-primary/50",
                 )}
               >
                 <button
@@ -225,7 +226,7 @@ function ProjectsPage() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </GlowCard>
+              </Card>
             </motion.div>
           );
         })}

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useState, useRef, FormEvent } from "react";
-import { GlowCard } from "@/components/GlowCard";
+import { Card } from "@/components/Card";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -79,7 +79,7 @@ function ContactPage() {
       </motion.div>
 
       <div className="mt-12">
-        <GlowCard className="p-8">
+        <Card className="p-8">
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-1.5">
@@ -138,7 +138,7 @@ function ContactPage() {
               Opens your email app with this message addressed to me.
             </p>
           </form>
-        </GlowCard>
+        </Card>
       </div>
 
       <p className="mt-10 text-center text-sm text-muted-foreground">
@@ -152,7 +152,7 @@ function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: (i + 2) * 0.06 }}
           >
-            <GlowCard>
+            <Card>
               <p className="text-xs uppercase tracking-wider text-primary">{c.label}</p>
               <p className="mt-2 break-all font-display text-lg">{c.value}</p>
               <div className="mt-4 flex gap-2">
@@ -172,7 +172,7 @@ function ContactPage() {
                   {copied === c.value ? "Copied ✓" : "Copy"}
                 </button>
               </div>
-            </GlowCard>
+            </Card>
           </motion.div>
         ))}
       </div>

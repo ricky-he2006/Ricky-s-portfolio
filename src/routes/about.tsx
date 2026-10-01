@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { GlowCard } from "@/components/GlowCard";
+import { Card } from "@/components/Card";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -63,7 +63,7 @@ function AboutPage() {
       </motion.div>
 
       <div className="mt-14 grid gap-6 md:grid-cols-2">
-        <GlowCard>
+        <Card>
           <h2 className="font-display text-xl font-semibold">Education</h2>
           <div className="mt-4 space-y-4 text-sm">
             <div>
@@ -76,9 +76,9 @@ function AboutPage() {
               <p className="text-xs text-muted-foreground">Diploma, June 2024 · Honors Roll every semester</p>
             </div>
           </div>
-        </GlowCard>
+        </Card>
 
-        <GlowCard>
+        <Card>
           <h2 className="font-display text-xl font-semibold">Honors</h2>
           <ul className="mt-4 space-y-2 text-sm">
             {honors.map((h) => (
@@ -88,9 +88,9 @@ function AboutPage() {
               </li>
             ))}
           </ul>
-        </GlowCard>
+        </Card>
 
-        <GlowCard className="md:col-span-2">
+        <Card className="md:col-span-2">
           <h2 className="font-display text-xl font-semibold">Skills</h2>
           <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {skillGroups.map((g) => (
@@ -106,9 +106,9 @@ function AboutPage() {
               </div>
             ))}
           </div>
-        </GlowCard>
+        </Card>
 
-        <GlowCard>
+        <Card>
           <h2 className="font-display text-xl font-semibold">Activities</h2>
           <ul className="mt-4 space-y-2 text-sm">
             {activities.map((a) => (
@@ -118,16 +118,16 @@ function AboutPage() {
               </li>
             ))}
           </ul>
-        </GlowCard>
+        </Card>
 
-        <GlowCard>
+        <Card>
           <h2 className="font-display text-xl font-semibold">Spoken Languages</h2>
           <ul className="mt-4 space-y-2 text-sm">
             <li>🇺🇸 English — Native</li>
             <li>🇨🇳 Chinese — Native</li>
             <li>🇪🇸 Spanish — Basic</li>
           </ul>
-        </GlowCard>
+        </Card>
       </div>
     </div>
   );

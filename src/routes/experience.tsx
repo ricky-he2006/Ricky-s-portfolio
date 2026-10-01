@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { GlowCard } from "@/components/GlowCard";
+import { Card } from "@/components/Card";
 
 export const Route = createFileRoute("/experience")({
   head: () => ({
@@ -70,7 +70,7 @@ function ExperiencePage() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: i * 0.05 }}
           >
-            <GlowCard className="h-full">
+            <Card className="h-full">
               <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-2">
@@ -104,7 +104,7 @@ function ExperiencePage() {
                   </span>
                 ))}
               </div>
-            </GlowCard>
+            </Card>
           </motion.div>
         ))}
       </div>

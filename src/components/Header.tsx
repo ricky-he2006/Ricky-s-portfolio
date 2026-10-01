@@ -34,7 +34,7 @@ export function Header() {
                 className="relative rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground data-[status=active]:text-foreground"
               >
                 {l.label}
-                <span className="absolute inset-x-3 -bottom-0.5 h-px scale-x-0 bg-gradient-to-r from-primary to-accent transition-transform duration-300 group-data-[status=active]:scale-x-100 [a[data-status=active]_&]:scale-x-100" />
+                <span className="absolute inset-x-3 -bottom-0.5 h-px scale-x-0 bg-primary transition-transform duration-300 group-data-[status=active]:scale-x-100 [a[data-status=active]_&]:scale-x-100" />
               </Link>
             </li>
           ))}

@@ -1,151 +1,240 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import profilePhoto from "@/assets/profilepic.jpeg";
-import { GlowCard } from "@/components/GlowCard";
-import { projects } from "@/lib/projects";
+import { OsuMark } from "@/components/OsuMark";
+import { projects, type Project } from "@/lib/projects";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Ruiqi He — Data Analytics & AI Portfolio" },
-      { name: "description", content: "Ricky He: data analytics student at Ohio State, hackathon winner, builder of AI and visualization tools." },
+      { name: "description", content: "Ruiqi (Ricky) He — data analytics and AI at Ohio State. Models, pipelines, and visualizations that turn messy data into decisions." },
       { property: "og:title", content: "Ruiqi He — Data Analytics & AI Portfolio" },
-      { property: "og:description", content: "Hackathon-winning data & AI projects from Ohio State." },
+      { property: "og:description", content: "Data analytics and AI work from Ohio State — models, pipelines, and visualizations." },
     ],
   }),
   component: Home,
 });
 
-const skills = [
-  "Python", "SQL", "R", "Java", "C++", "TypeScript", "PyTorch", "scikit-learn",
-  "Pandas", "FastAPI", "React", "Docker", "Gemini", "Qwen", "RAPIDS cuDF",
-  "Databricks", "Geospatial", "LLMs", "GitHub Actions",
-];
+const featured = ["datafest-osu", "doctor-loop", "clara"]
+  .map((slug) => projects.find((p) => p.slug === slug))
+  .filter((p): p is Project => Boolean(p));
 
-const featured = projects.filter((p) => p.featured).slice(0, 3);
+const disciplines = [
+  {
+    label: "Data engineering",
+    stack: "Python · SQL · RAPIDS cuDF · Databricks · Docker · GitHub Actions",
+  },
+  {
+    label: "Machine learning",
+    stack: "PyTorch · scikit-learn · XGBoost · Monte Carlo simulation",
+  },
+  {
+    label: "GenAI & LLMs",
+    stack: "Gemini · Qwen · watsonx · FastAPI · RAG pipelines",
+  },
+  {
+    label: "Visualization",
+    stack: "React · TypeScript · interactive dashboards · geospatial",
+  },
+  {
+    label: "Domain",
+    stack: "Biomedical & public-health analytics · explainable AI",
+  },
+];
 
 function Home() {
   return (
     <div className="relative">
-      <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 pt-20 pb-24 md:grid-cols-[1.2fr_1fr]">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-        >
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs text-primary">
-            <span className="size-1.5 animate-pulse rounded-full bg-primary" />
-            Data Analytics @ The Ohio State University 2028
+      {/* Masthead dateline */}
+      <section className="mx-auto max-w-6xl px-6 pt-10">
+        <div className="flex items-center justify-between border-b border-border pb-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+          <span>Ruiqi “Ricky” He</span>
+          <span className="hidden items-center gap-2 sm:flex">
+            <OsuMark className="size-4" />
+            Ohio State University
           </span>
-          <h1 className="mt-5 font-display text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl">
-            Hi, I'm <span className="text-gradient">Ricky</span>
-          </h1>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              to="/projects"
-              className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:shadow-[0_0_40px_-5px_oklch(0.82_0.14_200/0.7)]"
-            >
-              View projects
-              <span className="transition-transform group-hover:translate-x-1">→</span>
-            </Link>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full border border-border px-6 py-3 text-sm font-semibold transition-colors hover:border-primary hover:text-primary"
-            >
-              Resume
-            </a>
-            <Link
-              to="/contact"
-              className="rounded-full border border-border px-6 py-3 text-sm font-semibold transition-colors hover:border-primary hover:text-primary"
-            >
-              Get in touch
-            </Link>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="relative mx-auto"
-        >
-          <div className="absolute -inset-6 rounded-full bg-gradient-to-br from-primary/40 to-accent/30 blur-3xl" />
-          <div className="relative animate-float overflow-hidden rounded-full border-2 border-primary/40 p-1 glow-lg">
-            <img
-              src={profilePhoto}
-              alt="Portrait of Ruiqi He"
-              width={768}
-              height={768}
-              sizes="(max-width: 640px) 288px, (max-width: 1024px) 320px, 512px"
-              className="size-72 rounded-full object-cover sm:size-80"
-            />
-          </div>
-        </motion.div>
+          <span>Class of 2028</span>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-8" aria-labelledby="featured-heading">
-        <div className="flex flex-wrap items-end justify-between gap-4">
+      {/* Hero */}
+      <section className="mx-auto max-w-6xl px-6 pb-16 pt-16 md:pt-24">
+        <motion.h1
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-4xl font-display text-5xl font-bold leading-[0.98] tracking-tight sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+        >
+          Hi, I'm <span className="text-primary">Ricky</span>.
+        </motion.h1>
+
+        <div className="mt-12 grid gap-12 md:grid-cols-[1.7fr_1fr] md:items-end">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-primary">Selected work</p>
-            <h2 id="featured-heading" className="mt-2 font-display text-3xl font-bold sm:text-4xl">
-              Featured <span className="text-gradient">wins</span>
-            </h2>
+            <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
+              Data analytics undergraduate at Ohio State, focused on biomedical
+              and public-health analytics. I build the models, the pipelines,
+              and the visualizations that make complex data actually legible —
+              from 7.7&thinsp;million-encounter hospital datasets to
+              clinician-facing AI.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
+              <Link
+                to="/projects"
+                className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
+              >
+                See the work
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </Link>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm font-medium underline decoration-border underline-offset-4 transition-colors hover:decoration-primary"
+              >
+                Résumé
+              </a>
+              <Link
+                to="/contact"
+                className="text-sm font-medium underline decoration-border underline-offset-4 transition-colors hover:decoration-primary"
+              >
+                Get in touch
+              </Link>
+            </div>
           </div>
+
+          {/* Portrait, treated as a detail not a centerpiece */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+            className="md:justify-self-end"
+          >
+            <div className="w-44">
+              <div className="overflow-hidden rounded-lg border border-border">
+                <img
+                  src={profilePhoto}
+                  alt="Portrait of Ruiqi He"
+                  width={176}
+                  height={176}
+                  loading="lazy"
+                  className="aspect-square w-full object-cover"
+                />
+              </div>
+              <p className="mt-3 text-sm font-medium">Ruiqi He</p>
+              <p className="text-xs text-muted-foreground">Data Analytics ’28, OSU</p>
+              <p className="text-xs text-muted-foreground">Biomedical &amp; public-health</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Selected work — editorial index */}
+      <section className="mx-auto max-w-6xl px-6 py-16" aria-labelledby="work-heading">
+        <div className="flex items-baseline justify-between border-b border-border pb-4">
+          <h2 id="work-heading" className="font-display text-2xl font-semibold tracking-tight">
+            Selected work
+          </h2>
           <Link
             to="/projects"
-            className="text-sm font-medium text-primary transition-all hover:gap-2 inline-flex items-center gap-1"
+            className="text-sm font-medium text-primary transition-all hover:translate-x-0.5"
           >
             All projects →
           </Link>
         </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div>
           {featured.map((p, i) => (
             <motion.div
               key={p.slug}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.45, delay: i * 0.06 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
             >
-              <Link to="/projects" hash={p.slug} className="block h-full">
-                <GlowCard className="h-full transition-colors hover:border-primary/40">
-                  <div className="flex flex-wrap items-center gap-2">
+              <Link
+                to="/projects"
+                hash={p.slug}
+                className="group grid grid-cols-[auto_1fr] items-start gap-x-5 gap-y-2 border-b border-border py-8 transition-colors hover:bg-muted/30 sm:grid-cols-[auto_1fr_auto] sm:gap-x-10"
+              >
+                <span className="font-display text-sm tabular-nums text-muted-foreground">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="min-w-0">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <h3 className="font-display text-xl font-semibold tracking-tight transition-colors group-hover:text-primary md:text-2xl">
+                      {p.title}
+                    </h3>
                     {p.badge && (
-                      <span className="rounded-full bg-primary/15 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                      <span className="rounded-full border border-border px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
                         {p.badge}
                       </span>
                     )}
-                    <span className="text-xs text-muted-foreground">{p.date}</span>
                   </div>
-                  <h3 className="mt-3 font-display text-lg font-semibold leading-snug">{p.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground line-clamp-3">{p.summary}</p>
-                  <p className="mt-4 text-xs font-medium text-primary">Open project →</p>
-                </GlowCard>
+                  <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                    {p.summary}
+                  </p>
+                </div>
+                <div className="col-span-2 flex items-center gap-4 sm:col-span-1 sm:flex-col sm:items-end sm:gap-2">
+                  <p className="text-xs text-muted-foreground">{p.date}</p>
+                  <span className="hidden text-primary transition-transform group-hover:translate-x-1 sm:inline-block">
+                    →
+                  </span>
+                </div>
               </Link>
             </motion.div>
           ))}
         </div>
       </section>
 
-      <section className="relative mt-16 overflow-hidden border-y border-border py-8" aria-label="Skills">
-        <div className="flex w-max gap-10 marquee" aria-hidden>
-          {[...skills, ...skills].map((s, i) => (
-            <span
-              key={i}
-              className="font-display text-2xl text-muted-foreground/70 whitespace-nowrap"
+      {/* Disciplines — a ledger, not a ticker */}
+      <section className="mx-auto max-w-6xl px-6 py-16" aria-labelledby="disciplines-heading">
+        <h2 id="disciplines-heading" className="border-b border-border pb-4 font-display text-2xl font-semibold tracking-tight">
+          What I work with
+        </h2>
+        <dl className="divide-y divide-border">
+          {disciplines.map((d) => (
+            <div
+              key={d.label}
+              className="grid grid-cols-1 gap-1 py-5 sm:grid-cols-[16rem_1fr] sm:gap-x-10"
             >
-              {s} <span className="text-primary">·</span>
-            </span>
+              <dt className="font-display text-sm font-medium">{d.label}</dt>
+              <dd className="text-sm text-muted-foreground">{d.stack}</dd>
+            </div>
           ))}
+        </dl>
+      </section>
+
+      {/* Closing invitation */}
+      <section className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <div className="border-t border-border pt-12">
+          <p className="text-[11px] uppercase tracking-[0.22em] text-primary">
+            Let’s talk
+          </p>
+          <h2 className="mt-4 max-w-2xl font-display text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+            Got a messy dataset, or an idea worth building?
+          </h2>
+          <p className="mt-4 max-w-xl text-muted-foreground">
+            I’m open to research, internships, and interesting problems at the
+            intersection of data and AI.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              to="/contact"
+              className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
+            >
+              Get in touch
+            </Link>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-border px-6 py-3 text-sm font-semibold transition-colors hover:border-primary"
+            >
+              Read the résumé
+            </a>
+          </div>
         </div>
-        <ul className="sr-only">
-          {skills.map((s) => (
-            <li key={s}>{s}</li>
-          ))}
-        </ul>
       </section>
     </div>
   );
