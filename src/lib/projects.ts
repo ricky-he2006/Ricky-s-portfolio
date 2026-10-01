@@ -3,13 +3,17 @@ export type Project = {
   title: string;
   date: string;
   badge?: string;
-  /** One-line teaser shown when collapsed */
+  /** Visual tier for the badge pill — "award" (scarlet) or "event" (neutral outline) */
+  badgeTier?: "award" | "event";
+  /** Theme tags used for filtering on the projects grid */
+  categories: string[];
+  /** One-line teaser shown on the card */
   summary: string;
   /** Expanded write-up — each string is a paragraph (used when sections is empty) */
   details: string[];
   /** Optional labeled sections (Challenge, Outcome, etc.) */
   sections?: { title: string; body: string }[];
-  /** Optional scale / impact figures for the expanded view */
+  /** Optional scale / impact figures for the case study */
   stats?: { label: string; value: string }[];
   bullets: string[];
   tech: string[];
@@ -17,9 +21,13 @@ export type Project = {
   featured?: boolean;
 };
 
+export const CATEGORIES = ["Healthcare & Bio", "AI & Agents", "Data & Viz", "Research"];
+
 export const projects: Project[] = [
   {
     slug: "datafest-osu",
+    categories: ["Data & Viz", "Healthcare & Bio"],
+    badgeTier: "award",
     title: "DataFest @ OSU — Best Visualization",
     date: "April 10–12, 2026",
     badge: "1st Place",
@@ -68,6 +76,8 @@ export const projects: Project[] = [
   },
   {
     slug: "clara",
+    categories: ["Data & Viz", "AI & Agents"],
+    badgeTier: "award",
     title: "CLARA — Clairvoyant Loss Avoidance & Risk Advisor",
     date: "Spring 2026",
     badge: "Hackathon Win",
@@ -118,6 +128,8 @@ export const projects: Project[] = [
   },
   {
     slug: "nyc-housing",
+    categories: ["Data & Viz"],
+    badgeTier: "award",
     title: "NYC Housing Sales Analytics",
     date: "Spring 2026",
     badge: "Hackathon Winner",
@@ -171,6 +183,8 @@ export const projects: Project[] = [
   },
   {
     slug: "doctor-loop",
+    categories: ["Healthcare & Bio", "AI & Agents"],
+    badgeTier: "award",
     title: "Doctor-in-the-Loop AI System",
     date: "Autumn 2025",
     badge: "1st Place — Foundation of AI",
@@ -220,6 +234,8 @@ export const projects: Project[] = [
   },
   {
     slug: "ai-study-planner",
+    categories: ["AI & Agents"],
+    badgeTier: "award",
     title: "AI Study Planner",
     date: "Autumn 2025",
     badge: "Top Project — BDAA × Lovable",
@@ -264,6 +280,8 @@ export const projects: Project[] = [
   },
   {
     slug: "research-society",
+    categories: ["AI & Agents"],
+    badgeTier: "event",
     title: "Research Society",
     date: "Summer 2026",
     badge: "Qwen Cloud Hackathon",
@@ -321,6 +339,7 @@ export const projects: Project[] = [
   },
   {
     slug: "talkora",
+    categories: ["AI & Agents"],
     title: "Talkora — Gemini Hackathon",
     date: "Spring 2026",
     summary:
@@ -368,6 +387,8 @@ export const projects: Project[] = [
   },
   {
     slug: "buckeyequest",
+    categories: ["AI & Agents"],
+    badgeTier: "event",
     title: "BuckeyeQuest",
     date: "Summer 2026",
     badge: "OpenAI Build Week",
@@ -425,6 +446,8 @@ export const projects: Project[] = [
   },
   {
     slug: "aegis",
+    categories: ["AI & Agents"],
+    badgeTier: "event",
     title: "Aegis — Security Automation Pipeline",
     date: "Spring 2026",
     badge: "GitLab AI Hackathon",
@@ -483,6 +506,7 @@ export const projects: Project[] = [
   },
   {
     slug: "sea-phages",
+    categories: ["Research", "Healthcare & Bio"],
     title: "SEA-PHAGES Research Lab",
     date: "Autumn 2025",
     summary:
