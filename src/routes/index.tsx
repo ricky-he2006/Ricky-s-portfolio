@@ -73,10 +73,10 @@ function Home() {
           <div>
             <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
               Data analytics undergraduate at Ohio State, focused on biomedical
-              and public-health analytics. I build the models, the pipelines,
-              and the visualizations that make complex data actually legible —
-              from 7.7&thinsp;million-encounter hospital datasets to
-              clinician-facing AI.
+              and public-health analytics. I’m most interested in the
+              intersection of AI and ML with biology and pharma — but just as
+              comfortable building models, pipelines, and research across the
+              wider data-and-AI landscape.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
               <Link
@@ -203,38 +203,6 @@ function Home() {
             </div>
           ))}
         </dl>
-      </section>
-
-      {/* Closing invitation */}
-      <section className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <div className="border-t border-border pt-12">
-          <p className="text-[11px] uppercase tracking-[0.22em] text-primary">
-            Let’s talk
-          </p>
-          <h2 className="mt-4 max-w-2xl font-display text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-            Got a messy dataset, or an idea worth building?
-          </h2>
-          <p className="mt-4 max-w-xl text-muted-foreground">
-            I’m open to research, internships, and interesting problems at the
-            intersection of data and AI.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              to="/contact"
-              className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
-            >
-              Get in touch
-            </Link>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full border border-border px-6 py-3 text-sm font-semibold transition-colors hover:border-primary"
-            >
-              Read the résumé
-            </a>
-          </div>
-        </div>
       </section>
     </div>
   );
