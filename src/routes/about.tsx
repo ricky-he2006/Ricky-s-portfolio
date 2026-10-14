@@ -43,11 +43,11 @@ const skillGroups = [
 const honors = ["National Buckeye Scholar", "Trustees Scholarship", "Dean's List", "PA State Academic Team Champion"];
 
 const activities = [
-  "BDAA (Big Data & Analytics Association) — Autumn 2025",
-  "Foundation of AI TA — Spring 2026",
-  "Formula Buckeye — Autumn 2025",
-  "Academic Team — 2022–2024",
-  "Mock Trial — 2022–2024",
+  "BDAA (Big Data & Analytics Association) — Autumn 2025 – Present",
+  "Foundation of AI TA — Spring 2026 – Present",
+  "Formula Buckeye — Autumn 2025 – Present",
+  "Academic Team — Autumn 2022 – Spring 2024 (PA State Academic Team Champion)",
+  "Mock Trial — Autumn 2022 – Spring 2024",
 ];
 
 function AboutPage() {

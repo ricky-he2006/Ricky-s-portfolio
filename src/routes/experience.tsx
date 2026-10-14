@@ -17,19 +17,29 @@ export const Route = createFileRoute("/experience")({
 const experienceItems = [
   {
     slug: "cao-lab-ra",
-    title: "Research Assistant",
+    title: "Research Assistant — Dr. Weidan Cao's Lab",
     date: "Sep 2026 – Present",
-    institution: "Dr. Cao's Lab — The Ohio State University",
+    institution: "The Ohio State University",
     badge: "Research",
     summary:
-      "Supporting CardioAI research and development.",
-    bullets: [],
-    tech: [],
+      "Supporting research at the intersection of AI, digital health, and human-centered healthcare technology.",
+    bullets: [
+      "Assist with usability testing and evaluation of an AI-powered cardiovascular symptom check-in system",
+      "Support research workflows involving Alexa, Garmin wearables, and connected mobile health technologies",
+      "Contribute to research documentation and manuscript revision for ongoing healthcare studies",
+    ],
+    tech: [
+      "Biomedical AI",
+      "Digital Health",
+      "Conversational AI",
+      "Wearable Technologies",
+      "Research Evaluation",
+    ],
   },
   {
     slug: "aimed-lab-intern",
     title: "Undergraduate Research Intern — AIMed Lab",
-    date: "Summer 2026 – Present",
+    date: "Summer 2026",
     institution: "The Ohio State University | Department of Biomedical Informatics",
     mentor: "Dr. Ping Zhang",
     badge: "Research",
